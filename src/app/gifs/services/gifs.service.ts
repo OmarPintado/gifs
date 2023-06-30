@@ -13,10 +13,6 @@ export class GifsService {
 
   constructor(private http: HttpClient) {//IMPORTAMOS EL HTTP CLIENT
       this.loadLocalStorage();//AL REINICIAR NAVEGADOR SE PRESENTA EL HISTORIAL ANTERIOR
-      if (this._tagsHistory){
-       let tagHistory = this._tagsHistory[0];
-       this.searchTag(tagHistory);
-      }
   }
 
   get tagsHistory() {//EXTRAEMOS EL HISTORIAL DE BÚSQUEDA TAGS
@@ -55,5 +51,8 @@ export class GifsService {
   private loadLocalStorage():void{ //CARGA LAS BÚSQUEDAS TRAS HABER REINICIADO EL NAVEGADOR
     if (!localStorage.getItem('history')) return;
     this._tagsHistory = JSON.parse(localStorage.getItem('history')!);
+
+    if(this._tagsHistory.length === 0) return;
+    this.searchTag(this._tagsHistory[0]);
   }
 }
