@@ -7,10 +7,15 @@ import {GifsService} from "../../../gifs/services/gifs.service";
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-    constructor(private servicioGif:GifsService) {
+    constructor(private servicioGif:GifsService) {// ESTOY PASANDO EL SERVICIO PARA PODER USARLO
   }
 
-  get tags(){
+  get tags():string[]{ //DEVUELVE LOS GIFS
     return this.servicioGif.tagsHistory;
   }
+
+  handleClick(tag:string):void{ //AL HACER CLICK SE MUESTRE EL GIF
+    this.servicioGif.searchTag(tag);
+  }
+
 }
