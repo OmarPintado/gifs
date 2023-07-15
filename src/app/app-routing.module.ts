@@ -19,7 +19,7 @@ const routes:Routes = [
     loadChildren:()=>import('./countries/countries.module').then(m => m.CountriesModule)
   },{
     path:'**',
-    redirectTo:'home'
+    redirectTo:'countries'
   },
 
 ]
