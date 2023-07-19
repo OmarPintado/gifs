@@ -11,13 +11,18 @@ import {count} from "rxjs";
 export class ByCapitalPageComponent {
 
   public countries: Country[] = [];
+  public isLoading: boolean = false
 
   constructor(private countriesService:CountriesService) {
   }
 
   searchByCapital(term: string): void {
+    this.isLoading = true
     this.countriesService.searchCapital(term)
-      .subscribe( pais => {this.countries = pais});
+      .subscribe( pais => {
+        this.countries = pais;
+        this.isLoading = false;
+      });
   }
 
 }

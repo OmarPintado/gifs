@@ -17,6 +17,7 @@
       style="text-align: right; margin: 4px 0px"
       *ngIf="countries.length > 0">Se encontraron {{ countries.length }} resultados
     </p>
+    <shared-loading-spinner *ngIf="isLoading"></shared-loading-spinner>
     <countries-table [paises]="countries"></countries-table>
   </div>
 </div>
